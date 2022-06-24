@@ -33,14 +33,17 @@ extension Template {
 }
 extension Template.Element {
   func centerPosition(in containerSize: CGSize) -> CGPoint {
-    let middleElementSize = frame(in: containerSize).middle
+    // NOTE: First, the position of the top left angle is evaluated.
     let startPosition: CGPoint = .init(
       x: containerSize.width.value(fromRelative: relativePosition.x),
-      y: containerSize.height.value(fromRelative: relativePosition.y)
+      y: containerSize.height - containerSize.height.value(fromRelative: relativePosition.y) // NOTE: Y is reverted
     )
+    // NOTE: Then, we evaluate the offset depending on Anchor (SwiftUI position is centered, and
+    // it's better to evaluate offset directly here, to optimize calculations)
+    let middleElementSize = frame(in: containerSize).middle
     return .init(
-      x: startPosition.x + middleElementSize.width,
-      y: startPosition.y + middleElementSize.height
+      x: startPosition.x.offset(value: middleElementSize.width, operation: anchorX.offsetOperation),
+      y: startPosition.y.offset(value: middleElementSize.height, operation: anchorY.offsetOperation)
     )
   }
   func frame(in containerSize: CGSize) -> CGSize {
@@ -72,9 +75,25 @@ extension Template.Element {
   }
   enum AnchorX: String, Equatable {
     case left, center, right
+
+    var offsetOperation: ((CGFloat, CGFloat) -> CGFloat)? {
+      switch self {
+      case .left: return (+)
+      case .center: return nil
+      case .right: return (-)
+      }
+    }
   }
   enum AnchorY: String, Equatable {
     case bottom, center, top
+
+    var offsetOperation: ((CGFloat, CGFloat) -> CGFloat)? {
+      switch self {
+      case .top: return (+)
+      case .center: return nil
+      case .bottom: return (-)
+      }
+    }
   }
 }
 

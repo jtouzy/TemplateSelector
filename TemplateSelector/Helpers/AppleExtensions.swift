@@ -23,6 +23,12 @@ extension CGFloat {
     self * relativeValue
   }
 }
+extension CGFloat {
+  typealias OffsetOperation = (CGFloat, CGFloat) -> CGFloat
+  func offset(value: CGFloat, operation: OffsetOperation? = nil) -> CGFloat {
+    operation?(self, value) ?? self
+  }
+}
 extension CGSize {
   var middle: CGSize {
     .init(width: width / 2, height: height / 2)

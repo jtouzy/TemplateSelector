@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: -TemplateElementRenderer.View
+
 struct TemplateElementRenderer: View {
   @State var element: Template.Element
 

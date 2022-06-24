@@ -13,6 +13,8 @@
 		F8C90EBD28659C640048689F /* TemplateElementRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C90EBC28659C640048689F /* TemplateElementRenderer.swift */; };
 		F8C90EBF2865ADFD0048689F /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C90EBE2865ADFD0048689F /* Template.swift */; };
 		F8C90EC12865AEA60048689F /* AppleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C90EC02865AEA60048689F /* AppleExtensions.swift */; };
+		F8C90EC32865B55D0048689F /* TemplateList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C90EC22865B55D0048689F /* TemplateList.swift */; };
+		F8C90EC82865C3760048689F /* TemplateRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C90EC72865C3760048689F /* TemplateRenderer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		F8C90EBC28659C640048689F /* TemplateElementRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateElementRenderer.swift; sourceTree = "<group>"; };
 		F8C90EBE2865ADFD0048689F /* Template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
 		F8C90EC02865AEA60048689F /* AppleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleExtensions.swift; sourceTree = "<group>"; };
+		F8C90EC22865B55D0048689F /* TemplateList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateList.swift; sourceTree = "<group>"; };
+		F8C90EC72865C3760048689F /* TemplateRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateRenderer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,8 @@
 				F8C90EC02865AEA60048689F /* AppleExtensions.swift */,
 				F8C90EBE2865ADFD0048689F /* Template.swift */,
 				F8C90EBC28659C640048689F /* TemplateElementRenderer.swift */,
+				F8C90EC22865B55D0048689F /* TemplateList.swift */,
+				F8C90EC72865C3760048689F /* TemplateRenderer.swift */,
 				F8C90EAE28659BFE0048689F /* TemplateSelectorApp.swift */,
 				F8C90EB228659BFF0048689F /* Assets.xcassets */,
 				F8C90EB428659BFF0048689F /* Preview Content */,
@@ -89,6 +95,8 @@
 			dependencies = (
 			);
 			name = TemplateSelector;
+			packageProductDependencies = (
+			);
 			productName = TemplateSelector;
 			productReference = F8C90EAB28659BFE0048689F /* TemplateSelector.app */;
 			productType = "com.apple.product-type.application";
@@ -117,6 +125,8 @@
 				Base,
 			);
 			mainGroup = F8C90EA228659BFE0048689F;
+			packageReferences = (
+			);
 			productRefGroup = F8C90EAC28659BFE0048689F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -143,9 +153,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8C90EC32865B55D0048689F /* TemplateList.swift in Sources */,
 				F8C90EBF2865ADFD0048689F /* Template.swift in Sources */,
 				F8C90EAF28659BFE0048689F /* TemplateSelectorApp.swift in Sources */,
 				F8C90EC12865AEA60048689F /* AppleExtensions.swift in Sources */,
+				F8C90EC82865C3760048689F /* TemplateRenderer.swift in Sources */,
 				F8C90EBD28659C640048689F /* TemplateElementRenderer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

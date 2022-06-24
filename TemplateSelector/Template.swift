@@ -9,9 +9,10 @@ import SwiftUI
 
 // MARK: -Template
 
-struct Template {
+struct Template: Identifiable {
+  let id: UUID
   let name: String
-  let data: Element
+  let element: Element
 }
 
 // MARK: -Template.Element

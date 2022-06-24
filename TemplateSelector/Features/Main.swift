@@ -38,7 +38,8 @@ extension Main {
 
 extension Main {
   struct Environment {
-    let fetchTemplates: () -> Effect<Result<[Template], NSError>, Never>
+    typealias FetchTemplates = TemplateList.Environment.FetchTemplates
+    let fetchTemplates: FetchTemplates
   }
 }
 
@@ -52,8 +53,11 @@ extension Main {
         return .none
       }
       state.templateEditorState = .init(editedTemplate: template)
-    case .templateEditor:
-      ()
+    case .templateEditor(let templateEditorAction):
+      guard case .closeTapped = templateEditorAction else {
+        return .none
+      }
+      state.templateEditorState = .none
     case .templateEditorStateChanged(let newState):
       state.templateEditorState = newState
     }

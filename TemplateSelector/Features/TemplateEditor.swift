@@ -23,7 +23,7 @@ extension TemplateEditor {
 
 extension TemplateEditor {
   enum Action {
-    case none
+    case closeTapped
   }
 }
 
@@ -58,6 +58,11 @@ extension TemplateEditor {
         }
         .navigationTitle("Template Editor")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+          ToolbarItem(placement: .navigationBarLeading) {
+            Button("Close") { viewStore.send(.closeTapped) }
+          }
+        }
       }
     }
   }

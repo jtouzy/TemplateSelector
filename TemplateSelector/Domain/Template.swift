@@ -70,10 +70,10 @@ extension Template.Element {
     let x: CGFloat
     let y: CGFloat
   }
-  enum AnchorX: Equatable {
+  enum AnchorX: String, Equatable {
     case left, center, right
   }
-  enum AnchorY: Equatable {
+  enum AnchorY: String, Equatable {
     case bottom, center, top
   }
 }

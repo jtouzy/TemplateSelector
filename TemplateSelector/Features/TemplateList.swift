@@ -35,7 +35,8 @@ extension TemplateList {
 
 extension TemplateList {
   struct Environment {
-    let fetchTemplates: () -> Effect<Result<[Template], NSError>, Never>
+    typealias FetchTemplates = () -> Effect<Result<[Template], NSError>, Never>
+    let fetchTemplates: FetchTemplates
   }
 }
 

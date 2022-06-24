@@ -8,18 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		F8C90EAF28659BFE0048689F /* TemplateSelectorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C90EAE28659BFE0048689F /* TemplateSelectorApp.swift */; };
-		F8C90EB128659BFE0048689F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C90EB028659BFE0048689F /* ContentView.swift */; };
 		F8C90EB328659BFF0048689F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8C90EB228659BFF0048689F /* Assets.xcassets */; };
 		F8C90EB628659BFF0048689F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8C90EB528659BFF0048689F /* Preview Assets.xcassets */; };
 		F8C90EBD28659C640048689F /* TemplateElementRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C90EBC28659C640048689F /* TemplateElementRenderer.swift */; };
+		F8C90EBF2865ADFD0048689F /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C90EBE2865ADFD0048689F /* Template.swift */; };
+		F8C90EC12865AEA60048689F /* AppleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C90EC02865AEA60048689F /* AppleExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F8C90EAB28659BFE0048689F /* TemplateSelector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TemplateSelector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8C90EAE28659BFE0048689F /* TemplateSelectorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateSelectorApp.swift; sourceTree = "<group>"; };
-		F8C90EB028659BFE0048689F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F8C90EB228659BFF0048689F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F8C90EB528659BFF0048689F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F8C90EBC28659C640048689F /* TemplateElementRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateElementRenderer.swift; sourceTree = "<group>"; };
+		F8C90EBE2865ADFD0048689F /* Template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
+		F8C90EC02865AEA60048689F /* AppleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +55,9 @@
 		F8C90EAD28659BFE0048689F /* TemplateSelector */ = {
 			isa = PBXGroup;
 			children = (
-				F8C90EB028659BFE0048689F /* ContentView.swift */,
+				F8C90EC02865AEA60048689F /* AppleExtensions.swift */,
+				F8C90EBE2865ADFD0048689F /* Template.swift */,
+				F8C90EBC28659C640048689F /* TemplateElementRenderer.swift */,
 				F8C90EAE28659BFE0048689F /* TemplateSelectorApp.swift */,
 				F8C90EB228659BFF0048689F /* Assets.xcassets */,
 				F8C90EB428659BFF0048689F /* Preview Content */,
@@ -138,8 +143,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F8C90EB128659BFE0048689F /* ContentView.swift in Sources */,
+				F8C90EBF2865ADFD0048689F /* Template.swift in Sources */,
 				F8C90EAF28659BFE0048689F /* TemplateSelectorApp.swift in Sources */,
+				F8C90EC12865AEA60048689F /* AppleExtensions.swift in Sources */,
+				F8C90EBD28659C640048689F /* TemplateElementRenderer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

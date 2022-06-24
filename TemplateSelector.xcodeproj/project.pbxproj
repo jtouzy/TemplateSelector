@@ -14,6 +14,10 @@
 		F8C90EC12865AEA60048689F /* AppleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C90EC02865AEA60048689F /* AppleExtensions.swift */; };
 		F8C90EC32865B55D0048689F /* TemplateList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C90EC22865B55D0048689F /* TemplateList.swift */; };
 		F8C90EC82865C3760048689F /* TemplateRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C90EC72865C3760048689F /* TemplateRenderer.swift */; };
+		F8C90ECF2865C6470048689F /* TemplateEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C90ECE2865C6470048689F /* TemplateEditor.swift */; };
+		F8C90ED22865C7A70048689F /* SwiftUINavigation in Frameworks */ = {isa = PBXBuildFile; productRef = F8C90ED12865C7A70048689F /* SwiftUINavigation */; };
+		F8C90ED52865CE5B0048689F /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = F8C90ED42865CE5B0048689F /* ComposableArchitecture */; };
+		F8C90ED72865D29A0048689F /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C90ED62865D29A0048689F /* Main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +29,8 @@
 		F8C90EC02865AEA60048689F /* AppleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleExtensions.swift; sourceTree = "<group>"; };
 		F8C90EC22865B55D0048689F /* TemplateList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateList.swift; sourceTree = "<group>"; };
 		F8C90EC72865C3760048689F /* TemplateRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateRenderer.swift; sourceTree = "<group>"; };
+		F8C90ECE2865C6470048689F /* TemplateEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateEditor.swift; sourceTree = "<group>"; };
+		F8C90ED62865D29A0048689F /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +38,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8C90ED52865CE5B0048689F /* ComposableArchitecture in Frameworks */,
+				F8C90ED22865C7A70048689F /* SwiftUINavigation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +87,8 @@
 		F8C90ECA2865C5A80048689F /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				F8C90ED62865D29A0048689F /* Main.swift */,
+				F8C90ECE2865C6470048689F /* TemplateEditor.swift */,
 				F8C90EC22865B55D0048689F /* TemplateList.swift */,
 			);
 			path = Features;
@@ -125,6 +135,8 @@
 			);
 			name = TemplateSelector;
 			packageProductDependencies = (
+				F8C90ED12865C7A70048689F /* SwiftUINavigation */,
+				F8C90ED42865CE5B0048689F /* ComposableArchitecture */,
 			);
 			productName = TemplateSelector;
 			productReference = F8C90EAB28659BFE0048689F /* TemplateSelector.app */;
@@ -155,6 +167,8 @@
 			);
 			mainGroup = F8C90EA228659BFE0048689F;
 			packageReferences = (
+				F8C90ED02865C7A70048689F /* XCRemoteSwiftPackageReference "swiftui-navigation" */,
+				F8C90ED32865CE5B0048689F /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 			);
 			productRefGroup = F8C90EAC28659BFE0048689F /* Products */;
 			projectDirPath = "";
@@ -183,8 +197,10 @@
 			files = (
 				F8C90EC32865B55D0048689F /* TemplateList.swift in Sources */,
 				F8C90EBF2865ADFD0048689F /* Template.swift in Sources */,
+				F8C90ECF2865C6470048689F /* TemplateEditor.swift in Sources */,
 				F8C90EAF28659BFE0048689F /* TemplateSelectorApp.swift in Sources */,
 				F8C90EC12865AEA60048689F /* AppleExtensions.swift in Sources */,
+				F8C90ED72865D29A0048689F /* Main.swift in Sources */,
 				F8C90EC82865C3760048689F /* TemplateRenderer.swift in Sources */,
 				F8C90EBD28659C640048689F /* TemplateElementRenderer.swift in Sources */,
 			);
@@ -393,6 +409,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F8C90ED02865C7A70048689F /* XCRemoteSwiftPackageReference "swiftui-navigation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swiftui-navigation";
+			requirement = {
+				kind = exactVersion;
+				version = 0.1.0;
+			};
+		};
+		F8C90ED32865CE5B0048689F /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = exactVersion;
+				version = 0.37.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F8C90ED12865C7A70048689F /* SwiftUINavigation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F8C90ED02865C7A70048689F /* XCRemoteSwiftPackageReference "swiftui-navigation" */;
+			productName = SwiftUINavigation;
+		};
+		F8C90ED42865CE5B0048689F /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F8C90ED32865CE5B0048689F /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F8C90EA328659BFE0048689F /* Project object */;
 }

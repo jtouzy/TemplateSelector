@@ -9,7 +9,7 @@ import SwiftUI
 
 // MARK: -Template
 
-struct Template: Identifiable {
+struct Template: Identifiable, Equatable {
   let id: UUID
   let name: String
   let element: Element
@@ -18,16 +18,17 @@ struct Template: Identifiable {
 // MARK: -Template.Element
 
 extension Template {
-  struct Element: Identifiable {
+  struct Element: Identifiable, Equatable {
     let id: UUID
     let relativePosition: RelativePosition
     let relativeSize: RelativeSize
     let anchorX: AnchorX
     let anchorY: AnchorY
-    let backgroundColor: Color
     let relativePadding: EdgeInsets
     let media: Media?
     let children: [Element]
+    var backgroundColor: Color
+    var isSelected: Bool
   }
 }
 extension Template.Element {
@@ -61,18 +62,18 @@ extension Template.Element {
 // MARK: -Template.Element layout types
 
 extension Template.Element {
-  struct RelativeSize {
+  struct RelativeSize: Equatable {
     let width: CGFloat
     let height: CGFloat
   }
-  struct RelativePosition {
+  struct RelativePosition: Equatable {
     let x: CGFloat
     let y: CGFloat
   }
-  enum AnchorX {
+  enum AnchorX: Equatable {
     case left, center, right
   }
-  enum AnchorY {
+  enum AnchorY: Equatable {
     case bottom, center, top
   }
 }
@@ -80,7 +81,7 @@ extension Template.Element {
 // MARK: -Template.Element.Media type
 
 extension Template.Element {
-  struct Media {
+  struct Media: Equatable {
     let name: String
     let contentMode: ContentMode
   }

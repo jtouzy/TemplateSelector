@@ -11,15 +11,16 @@ import SwiftUI
 
 struct TemplateElementRenderer: View {
   @State var element: Template.Element
+  var onTap: (Template.Element) -> Void
 
   var body: some View {
     GeometryReader { proxy in
       Rectangle()
-        .fill(element.backgroundColor)
+        .fill(element.backgroundColor.opacity(element.isSelected ? 0.7 : 1))
         .position(element.centerPosition(in: proxy.size))
         .frame(element.frame(in: proxy.size))
         .overlay(mediaOverlay(from: element))
-        .overlay(childrenOverlay(from: element, size: proxy.size))
+        .overlay(childrenOverlay(from: element, size: proxy.size, onTap: onTap))
     }
   }
 }
@@ -35,9 +36,13 @@ private func mediaOverlay(from element: Template.Element) -> some View {
 }
 
 @ViewBuilder
-private func childrenOverlay(from element: Template.Element, size containerSize: CGSize) -> some View {
+private func childrenOverlay(
+  from element: Template.Element,
+  size containerSize: CGSize,
+  onTap: @escaping (Template.Element) -> Void
+) -> some View {
   ForEach(element.children) { element in
-    TemplateElementRenderer(element: element)
+    TemplateElementRenderer(element: element, onTap: onTap)
   }
   .padding(element.padding(in: containerSize))
 }

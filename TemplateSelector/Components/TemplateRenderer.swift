@@ -11,9 +11,13 @@ import SwiftUI
 
 struct TemplateRenderer: View {
   @State var template: Template
+  var onTap: (Template.Element) -> Void
 
   var body: some View {
-    TemplateElementRenderer(element: template.element)
-      .cornerRadius(9.0)
+    TemplateElementRenderer(
+      element: template.element,
+      onTap: onTap
+    )
+    .cornerRadius(9.0)
   }
 }

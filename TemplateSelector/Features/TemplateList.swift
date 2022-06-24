@@ -5,43 +5,56 @@
 //  Created by Jérémy TOUZY on 24/06/2022.
 //
 
+import ComposableArchitecture
 import SwiftUI
 
-// MARK: -TemplateList.ViewModel
-
-struct TemplateList {
-  class ViewModel: ObservableObject {
-    typealias FetchTemplates = () async throws -> [Template]
-
-    @Published var state: State
-    @Published var selectedTemplate: Template?
-
-    private var fetchTemplates: FetchTemplates
-
-    init(state: State = .loadingTemplates, fetchTemplates: @escaping FetchTemplates) {
-      self.state = state
-      self.fetchTemplates = fetchTemplates
-    }
-
-    func fetchTemplatesOnAppear() async {
-      do {
-        let templates = try await fetchTemplates()
-        await MainActor.run {
-          self.state = .displayed(data: templates)
-        }
-      } catch {
-        await MainActor.run {
-          self.state = .loadingFailure
-        }
-      }
-    }
-  }
+enum TemplateList {
 }
+
+// MARK: -TemplateList.State
+
 extension TemplateList {
-  enum State {
+  enum State: Equatable {
     case loadingTemplates
     case displayed(data: [Template])
     case loadingFailure
+  }
+}
+
+// MARK: -TemplateList.Action
+
+extension TemplateList {
+  enum Action {
+    case onAppear
+    case templateFetched(Result<[Template], NSError>)
+    case templateSelected(Template)
+  }
+}
+
+// MARK: -TemplateList.Environment
+
+extension TemplateList {
+  struct Environment {
+    let fetchTemplates: () -> Effect<Result<[Template], NSError>, Never>
+  }
+}
+
+// MARK: -TemplateList.Reducer
+
+extension TemplateList {
+  static let reducer: Reducer<State, Action, Environment> = .init { state, action, environment in
+    switch action {
+    case .onAppear:
+      state = .loadingTemplates
+      return environment.fetchTemplates().map(Action.templateFetched)
+    case .templateFetched(.success(let templates)):
+      state = .displayed(data: templates)
+    case .templateFetched(.failure):
+      state = .loadingFailure
+    case .templateSelected(let template):
+      ()
+    }
+    return .none
   }
 }
 
@@ -72,44 +85,54 @@ private struct UI {
 
 extension TemplateList {
   struct View: SwiftUI.View {
-    @ObservedObject var viewModel: TemplateList.ViewModel
+    let store: Store<State, Action>
+    @ObservedObject var viewStore: ViewStore<State, Action>
+
+    init(store: Store<State, Action>) {
+      self.store = store
+      self.viewStore = ViewStore(store)
+    }
 
     var body: some SwiftUI.View {
       NavigationView {
         stateBasedView(
-          using: viewModel.state
+          using: viewStore.state,
+          onTemplateTap: { viewStore.send(.templateSelected($0)) }
         )
         .navigationTitle("Choose a template")
       }
-      .onAppear {
-        Task {
-          await viewModel.fetchTemplatesOnAppear()
-        }
-      }
+      .onAppear { viewStore.send(.onAppear) }
     }
   }
 }
 
 @ViewBuilder
-private func stateBasedView(using state: TemplateList.State) -> some View {
+private func stateBasedView(
+  using state: TemplateList.State,
+  onTemplateTap: @escaping (Template) -> Void
+) -> some View {
   switch state {
   case .loadingTemplates:
     ProgressView()
   case .displayed(let data):
-    templateListView(using: data)
+    templateListView(using: data, onTap: onTemplateTap)
   case .loadingFailure:
     Text("Failure!")
   }
 }
 
 @ViewBuilder
-private func templateListView(using templates: [Template]) -> some View {
+private func templateListView(
+  using templates: [Template],
+  onTap: @escaping (Template) -> Void
+) -> some View {
   GeometryReader { proxy in
     ScrollView {
       LazyVGrid(columns: UI.Grid.columns, spacing: .zero) {
         ForEach(templates) { template in
-          TemplateRenderer(template: template)
+          TemplateRenderer(template: template, onTap: { _ in })
             .frame(UI.GridItem.frame(in: proxy.size))
+            .onTapGesture { onTap(template) }
         }
       }
     }

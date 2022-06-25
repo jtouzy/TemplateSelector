@@ -21,7 +21,19 @@
 		F8D802C828660C7600BB2E2F /* AppleExtensions in Resources */ = {isa = PBXBuildFile; fileRef = F8D802C728660C7600BB2E2F /* AppleExtensions */; };
 		F8D802CB28660D8F00BB2E2F /* Domain in Frameworks */ = {isa = PBXBuildFile; productRef = F8D802CA28660D8F00BB2E2F /* Domain */; };
 		F8D802CD28660D9600BB2E2F /* AppleExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = F8D802CC28660D9600BB2E2F /* AppleExtensions */; };
+		F8D802D72867955700BB2E2F /* TemplateListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D802D62867955700BB2E2F /* TemplateListTests.swift */; };
+		F8D802E02867973A00BB2E2F /* Efs in Frameworks */ = {isa = PBXBuildFile; productRef = F8D802DF2867973A00BB2E2F /* Efs */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F8D802D82867955700BB2E2F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F8C90EA328659BFE0048689F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F8C90EAA28659BFE0048689F;
+			remoteInfo = TemplateSelector;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		F8C90EAB28659BFE0048689F /* TemplateSelector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TemplateSelector.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -35,6 +47,10 @@
 		F8C90ED82865F1360048689F /* Environment+Live.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+Live.swift"; sourceTree = "<group>"; };
 		F8C90EE428660B5D0048689F /* Domain */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Domain; sourceTree = "<group>"; };
 		F8D802C728660C7600BB2E2F /* AppleExtensions */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AppleExtensions; sourceTree = "<group>"; };
+		F8D802D42867955600BB2E2F /* TemplateSelectorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TemplateSelectorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8D802D62867955700BB2E2F /* TemplateListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateListTests.swift; sourceTree = "<group>"; };
+		F8D802DD2867957600BB2E2F /* TemplateSelector.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TemplateSelector.xctestplan; sourceTree = "<group>"; };
+		F8D802E128679A7600BB2E2F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,9 +59,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8D802CB28660D8F00BB2E2F /* Domain in Frameworks */,
+				F8D802E02867973A00BB2E2F /* Efs in Frameworks */,
 				F8D802CD28660D9600BB2E2F /* AppleExtensions in Frameworks */,
 				F8C90ED52865CE5B0048689F /* ComposableArchitecture in Frameworks */,
 				F8C90ED22865C7A70048689F /* SwiftUINavigation in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F8D802D12867955600BB2E2F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,9 +79,11 @@
 		F8C90EA228659BFE0048689F = {
 			isa = PBXGroup;
 			children = (
-				F8C90EAD28659BFE0048689F /* TemplateSelector */,
-				F8C90EAC28659BFE0048689F /* Products */,
+				F8D802E128679A7600BB2E2F /* README.md */,
 				F8D802C928660D8F00BB2E2F /* Frameworks */,
+				F8C90EAC28659BFE0048689F /* Products */,
+				F8C90EAD28659BFE0048689F /* TemplateSelector */,
+				F8D802D52867955700BB2E2F /* TemplateSelectorTests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				F8C90EAB28659BFE0048689F /* TemplateSelector.app */,
+				F8D802D42867955600BB2E2F /* TemplateSelectorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -76,6 +103,7 @@
 				F8C90EE428660B5D0048689F /* Domain */,
 				F8C90ED82865F1360048689F /* Environment+Live.swift */,
 				F8C90EAE28659BFE0048689F /* TemplateSelectorApp.swift */,
+				F8D802DD2867957600BB2E2F /* TemplateSelector.xctestplan */,
 				F8C90EC92865C5920048689F /* Components */,
 				F8C90ECA2865C5A80048689F /* Features */,
 				F8C90ECD2865C5DA0048689F /* Resources */,
@@ -117,6 +145,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F8D802D52867955700BB2E2F /* TemplateSelectorTests */ = {
+			isa = PBXGroup;
+			children = (
+				F8D802D62867955700BB2E2F /* TemplateListTests.swift */,
+			);
+			path = TemplateSelectorTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,10 +174,29 @@
 				F8C90ED42865CE5B0048689F /* ComposableArchitecture */,
 				F8D802CA28660D8F00BB2E2F /* Domain */,
 				F8D802CC28660D9600BB2E2F /* AppleExtensions */,
+				F8D802DF2867973A00BB2E2F /* Efs */,
 			);
 			productName = TemplateSelector;
 			productReference = F8C90EAB28659BFE0048689F /* TemplateSelector.app */;
 			productType = "com.apple.product-type.application";
+		};
+		F8D802D32867955600BB2E2F /* TemplateSelectorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F8D802DA2867955700BB2E2F /* Build configuration list for PBXNativeTarget "TemplateSelectorTests" */;
+			buildPhases = (
+				F8D802D02867955600BB2E2F /* Sources */,
+				F8D802D12867955600BB2E2F /* Frameworks */,
+				F8D802D22867955600BB2E2F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F8D802D92867955700BB2E2F /* PBXTargetDependency */,
+			);
+			name = TemplateSelectorTests;
+			productName = TemplateSelectorTests;
+			productReference = F8D802D42867955600BB2E2F /* TemplateSelectorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -155,6 +210,10 @@
 				TargetAttributes = {
 					F8C90EAA28659BFE0048689F = {
 						CreatedOnToolsVersion = 14.0;
+					};
+					F8D802D32867955600BB2E2F = {
+						CreatedOnToolsVersion = 14.0;
+						TestTargetID = F8C90EAA28659BFE0048689F;
 					};
 				};
 			};
@@ -170,12 +229,14 @@
 			packageReferences = (
 				F8C90ED02865C7A70048689F /* XCRemoteSwiftPackageReference "swiftui-navigation" */,
 				F8C90ED32865CE5B0048689F /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				F8D802DE2867973A00BB2E2F /* XCRemoteSwiftPackageReference "Efs" */,
 			);
 			productRefGroup = F8C90EAC28659BFE0048689F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				F8C90EAA28659BFE0048689F /* TemplateSelector */,
+				F8D802D32867955600BB2E2F /* TemplateSelectorTests */,
 			);
 		};
 /* End PBXProject section */
@@ -188,6 +249,13 @@
 				F8D802C828660C7600BB2E2F /* AppleExtensions in Resources */,
 				F8C90EE528660B5D0048689F /* Domain in Resources */,
 				F8C90EB328659BFF0048689F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F8D802D22867955600BB2E2F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,7 +276,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F8D802D02867955600BB2E2F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F8D802D72867955700BB2E2F /* TemplateListTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F8D802D92867955700BB2E2F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F8C90EAA28659BFE0048689F /* TemplateSelector */;
+			targetProxy = F8D802D82867955700BB2E2F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		F8C90EB728659BFF0048689F /* Debug */ = {
@@ -389,6 +473,42 @@
 			};
 			name = Release;
 		};
+		F8D802DB2867955700BB2E2F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 23A3PS5QB5;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jtouzy.TemplateSelectorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TemplateSelector.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TemplateSelector";
+			};
+			name = Debug;
+		};
+		F8D802DC2867955700BB2E2F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 23A3PS5QB5;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jtouzy.TemplateSelectorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TemplateSelector.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TemplateSelector";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -406,6 +526,15 @@
 			buildConfigurations = (
 				F8C90EBA28659BFF0048689F /* Debug */,
 				F8C90EBB28659BFF0048689F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F8D802DA2867955700BB2E2F /* Build configuration list for PBXNativeTarget "TemplateSelectorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F8D802DB2867955700BB2E2F /* Debug */,
+				F8D802DC2867955700BB2E2F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -429,6 +558,14 @@
 				version = 0.38.0;
 			};
 		};
+		F8D802DE2867973A00BB2E2F /* XCRemoteSwiftPackageReference "Efs" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jtouzy/Efs";
+			requirement = {
+				kind = exactVersion;
+				version = 0.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -449,6 +586,11 @@
 		F8D802CC28660D9600BB2E2F /* AppleExtensions */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppleExtensions;
+		};
+		F8D802DF2867973A00BB2E2F /* Efs */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F8D802DE2867973A00BB2E2F /* XCRemoteSwiftPackageReference "Efs" */;
+			productName = Efs;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

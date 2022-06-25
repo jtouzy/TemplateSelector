@@ -25,7 +25,7 @@ extension TemplateList {
 // MARK: -TemplateList.Action
 
 extension TemplateList {
-  enum Action {
+  enum Action: Equatable {
     case onAppear
     case templateFetched(Result<[Template], NSError>)
     case templateSelected(Template)
@@ -53,7 +53,7 @@ extension TemplateList {
       state = .displayed(data: templates)
     case .templateFetched(.failure):
       state = .loadingFailure
-    case .templateSelected(let template):
+    case .templateSelected:
       ()
     }
     return .none

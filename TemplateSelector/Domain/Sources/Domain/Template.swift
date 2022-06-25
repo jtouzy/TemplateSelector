@@ -14,6 +14,12 @@ public struct Template: Identifiable, Equatable {
   public let id: UUID
   public let name: String
   public let element: Element
+
+  public init(id: UUID, name: String, element: Element) {
+    self.id = id
+    self.name = name
+    self.element = element
+  }
 }
 
 // MARK: -Template.Element
@@ -29,7 +35,28 @@ extension Template {
     public let media: Media?
     public let children: [Element]
     public var backgroundColor: Color
-    public var isSelected: Bool
+
+    public init(
+      id: UUID,
+      relativePosition: RelativePosition = .init(x: .zero, y: .zero),
+      relativeSize: RelativeSize,
+      anchorX: AnchorX = .left,
+      anchorY: AnchorY = .bottom,
+      relativePadding: EdgeInsets = .uniform(.zero),
+      media: Media? = nil,
+      children: [Element] = [],
+      backgroundColor: Color
+    ) {
+      self.id = id
+      self.relativePosition = relativePosition
+      self.relativeSize = relativeSize
+      self.anchorX = anchorX
+      self.anchorY = anchorY
+      self.relativePadding = relativePadding
+      self.media = media
+      self.children = children
+      self.backgroundColor = backgroundColor
+    }
   }
 }
 extension Template.Element {
@@ -69,10 +96,20 @@ extension Template.Element {
   public struct RelativeSize: Equatable {
     public let width: CGFloat
     public let height: CGFloat
+
+    public init(width: CGFloat, height: CGFloat) {
+      self.width = width
+      self.height = height
+    }
   }
   public struct RelativePosition: Equatable {
     public let x: CGFloat
     public let y: CGFloat
+
+    public init(x: CGFloat, y: CGFloat) {
+      self.x = x
+      self.y = y
+    }
   }
   public enum AnchorX: String, Equatable {
     case left, center, right

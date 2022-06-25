@@ -18,7 +18,9 @@ So, let's take an overview of TCA with this schema (from a previous presentation
 
 * `Environment` : A black box provided to the TCA module to allow executing more complex logic outside of the module, and impact it later. For example, if you want to call an API, the module just has to expose an asynchronous function. The implementation of the call will be provided when you launch the module. If you're in a mock mode for example, you can provide mocked results instead of real API call.
 
-## Testing priorities
+## Testing
+
+### Testing priorities
 
 Why is only some code tested ? In my opinion not all the code must be tested, but only the most relevant one. In this case :
 
@@ -29,3 +31,9 @@ Why is only some code tested ? In my opinion not all the code must be tested, bu
 * `Features` : The features are written in TCA. With TCA modules, the most relevant code to test is the reducer, which contains all the module logic. The TCA library also offers some good tools to easily test those reducers. So tests are implemented in those modules too.
 
 With more time, the JSON parsing logic can be tested too. Default values are handled in the decoding specific function, so it would be nice to check this complex decoding implementation.
+
+### Combined testing
+
+An example of modularity has been implemented on `AppleExtensions` and `Domain` modules. Those two modules are tested, but `TemplateList`, included in the app, is tested too. 
+
+To take advantage of recent features of Xcode, we use a **TestPlan** to add multiple test targets into a single TestPlan. So that, when we run tests over the `TemplateSelector` target, all the SPM modules & the app target tests are launched.

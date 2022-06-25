@@ -48,7 +48,6 @@ extension Template.Element: Decodable {
     media = try container.decodeMedia()
     children = try container.decodeIfPresent([Template.Element].self, forKey: .children, withDefaultValue: [])
     backgroundColor = try container.decodeIfPresent(Color.self, forKey: .backgroundColor, withDefaultValue: .clear)
-    isSelected = false
   }
 }
 

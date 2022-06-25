@@ -1,0 +1,42 @@
+{
+  "configurations" : [
+    {
+      "id" : "8D95868B-12B5-4ADE-8745-35C4605CEFB8",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:TemplateSelector.xcodeproj",
+      "identifier" : "F8C90EAA28659BFE0048689F",
+      "name" : "TemplateSelector"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:TemplateSelector.xcodeproj",
+        "identifier" : "F8D802D32867955600BB2E2F",
+        "name" : "TemplateSelectorTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:TemplateSelector\/AppleExtensions",
+        "identifier" : "AppleExtensionsTests",
+        "name" : "AppleExtensionsTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:TemplateSelector\/Domain",
+        "identifier" : "DomainTests",
+        "name" : "DomainTests"
+      }
+    }
+  ],
+  "version" : 1
+}

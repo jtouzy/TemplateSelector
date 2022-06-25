@@ -27,8 +27,7 @@ final class TemplateTests: XCTestCase {
       relativePadding: relativePadding,
       media: nil,
       children: [],
-      backgroundColor: .clear,
-      isSelected: false
+      backgroundColor: .clear
     )
   }
 }

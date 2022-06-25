@@ -17,7 +17,7 @@ struct TemplateElementRenderer: View {
   var body: some View {
     GeometryReader { proxy in
       Rectangle()
-        .fill(element.backgroundColor.opacity(element.isSelected ? 0.7 : 1))
+        .fill(element.backgroundColor)
         .position(element.swiftUIPosition(in: proxy.size))
         .frame(element.swiftUIFrame(in: proxy.size))
         .overlay(mediaOverlay(from: element))

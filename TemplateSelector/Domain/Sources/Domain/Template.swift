@@ -13,12 +13,46 @@ import SwiftUI
 public struct Template: Identifiable, Equatable {
   public let id: UUID
   public let name: String
-  public let element: Element
+  public var element: Element
+  public var selectedElementId: Element.ID?
 
-  public init(id: UUID, name: String, element: Element) {
+  public var selectedElement: Element? {
+    guard let selectedElementId = selectedElementId else {
+      return nil
+    }
+    return findElement(in: element, identifiedBy: selectedElementId)
+  }
+
+  public init(id: UUID, name: String, element: Element, selectedElementId: Element.ID?) {
     self.id = id
     self.name = name
     self.element = element
+    self.selectedElementId = selectedElementId
+  }
+}
+
+// MARK: -Template Element tree search
+
+private func findElement(in element: Template.Element, identifiedBy elementId: Template.Element.ID) -> Template.Element? {
+  guard element.id == elementId else {
+    for child in element.children {
+      if let retrieved = findElement(in: child, identifiedBy: elementId) {
+        return retrieved
+      }
+    }
+    return nil
+  }
+  return element
+}
+
+// MARK: -Template updates
+
+extension Template {
+  public mutating func updateSelectedElementBackgroundColor(with color: Color) {
+    guard let selectedElementId = selectedElementId else {
+      return
+    }
+    element.updateBackgroundColor(with: color, forElementId: selectedElementId)
   }
 }
 
@@ -33,7 +67,7 @@ extension Template {
     public let anchorY: AnchorY
     public let relativePadding: EdgeInsets
     public let media: Media?
-    public let children: [Element]
+    public var children: [Element]
     public var backgroundColor: Color
 
     public init(
@@ -59,6 +93,31 @@ extension Template {
     }
   }
 }
+
+// MARK: -Template.Element updates
+
+extension Template.Element {
+  mutating func updateBackgroundColor(with color: Color, forElementId elementId: Template.Element.ID) {
+    guard elementId == id else {
+      updateBackgroundColorInChildren(with: color, forElementId: elementId)
+      return
+    }
+    backgroundColor = color
+  }
+  private mutating func updateBackgroundColorInChildren(
+    with color: Color,
+    forElementId elementId: Template.Element.ID
+  ) {
+    children = children.map { child in
+      var updatedChild = child
+      updatedChild.updateBackgroundColor(with: color, forElementId: elementId)
+      return updatedChild
+    }
+  }
+}
+
+// MARK: -Template.Element SwiftUI layout functions
+
 extension Template.Element {
   public func swiftUIPosition(in containerSize: CGSize) -> CGPoint {
     // NOTE: First, the position of the top left angle is evaluated.

@@ -132,9 +132,13 @@ private func templateListView(
     ScrollView {
       LazyVGrid(columns: UI.Grid.columns, spacing: .zero) {
         ForEach(templates) { template in
-          TemplateRenderer(template: template, onTap: { _ in })
-            .frame(UI.GridItem.frame(in: proxy.size))
-            .onTapGesture { onTap(template) }
+          TemplateRenderer(
+            template: template,
+            onTap: { _ in
+              onTap(template)
+            }
+          )
+          .frame(UI.GridItem.frame(in: proxy.size))
         }
       }
     }

@@ -1,61 +1,13 @@
 //
-//  AppleExtensions.swift
-//  TemplateSelector
+//  SwiftUI+extensions.swift
+//  AppleExtensions
 //
 //  Created by Jérémy TOUZY on 24/06/2022.
 //
 
-import Combine
 import SwiftUI
 
-// MARK: -Combine extensions
-
-extension Publisher {
-  func eraseToNSError() -> Publishers.MapError<Self, NSError> {
-    mapError { $0 as NSError }
-  }
-}
-
-// MARK: -CoreGraphics extensions
-
-extension CGFloat {
-  func value(fromRelative relativeValue: CGFloat) -> CGFloat {
-    self * relativeValue
-  }
-}
-extension CGFloat {
-  typealias OffsetOperation = (CGFloat, CGFloat) -> CGFloat
-  func offset(value: CGFloat, operation: OffsetOperation? = nil) -> CGFloat {
-    operation?(self, value) ?? self
-  }
-}
-extension CGSize {
-  var middle: CGSize {
-    .init(width: width / 2, height: height / 2)
-  }
-}
-
-// MARK: -Foundation extensions
-
-extension KeyedDecodingContainer {
-  func decodeIfPresent<T>(_ type: T.Type, forKey key: Key, withDefaultValue default: T) throws -> T
-  where T: Decodable {
-    try decodeIfPresent(T.self, forKey: key) ?? `default`
-  }
-  func decodeIfPresent<T>(_ type: T.Type, forKey key: Key) throws -> T?
-  where T: RawRepresentable, T.RawValue: Decodable {
-    guard let rawValue = try decodeIfPresent(T.RawValue.self, forKey: key) else {
-      return nil
-    }
-    return T(rawValue: rawValue)
-  }
-  func decodeIfPresent<T>(_ type: T.Type, forKey key: Key, withDefaultValue default: T) throws -> T
-  where T: RawRepresentable, T.RawValue: Decodable {
-    try decodeIfPresent(type, forKey: key) ?? `default`
-  }
-}
-
-// MARK: -SwiftUI extensions
+// MARK: -Color extensions
 
 // NOTE: Dumb Stack extension for Hex/Color conversion, refacto later
 extension Color: RawRepresentable {
@@ -107,6 +59,8 @@ extension Color: RawRepresentable {
   }
 }
 
+// MARK: -ContentMode extensions
+
 extension ContentMode: RawRepresentable {
   public init?(rawValue: String) {
     switch rawValue {
@@ -126,14 +80,18 @@ extension ContentMode: RawRepresentable {
   }
 }
 
+// MARK: -EdgeInsets extensions
+
 extension EdgeInsets {
-  static func uniform(_ value: CGFloat) -> Self {
+  public static func uniform(_ value: CGFloat) -> Self {
     .init(top: value, leading: value, bottom: value, trailing: value)
   }
 }
 
+// MARK: -View extensions
+
 extension View {
-  func frame(_ size: CGSize) -> some View {
+  public func frame(_ size: CGSize) -> some View {
     frame(width: size.width, height: size.height)
   }
 }

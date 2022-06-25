@@ -9,9 +9,9 @@ import SwiftUI
 
 // MARK: -Template wrapper for API call
 
-struct TemplateAPI {
-  struct Response: Decodable {
-    let templates: [Template]
+public struct TemplateAPI {
+  public struct Response: Decodable {
+    public let templates: [Template]
   }
 }
 
@@ -21,7 +21,7 @@ extension Template: Decodable {
   enum CodingKeys: CodingKey {
     case name, data
   }
-  init(from decoder: Decoder) throws {
+  public init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
     id = .init()
     name = try container.decode(String.self, forKey: .name)
@@ -37,7 +37,7 @@ extension Template.Element: Decodable {
   }
 
   // NOTE: Here the decoder is implemented manually to manage default values.
-  init(from decoder: Decoder) throws {
+  public init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
     id = .init()
     relativePosition = try container.decodeRelativePosition()

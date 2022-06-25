@@ -5,6 +5,7 @@
 //  Created by Jérémy TOUZY on 24/06/2022.
 //
 
+import Domain
 import SwiftUI
 
 // MARK: -TemplateElementRenderer.View
@@ -17,8 +18,8 @@ struct TemplateElementRenderer: View {
     GeometryReader { proxy in
       Rectangle()
         .fill(element.backgroundColor.opacity(element.isSelected ? 0.7 : 1))
-        .position(element.centerPosition(in: proxy.size))
-        .frame(element.frame(in: proxy.size))
+        .position(element.swiftUIPosition(in: proxy.size))
+        .frame(element.swiftUIFrame(in: proxy.size))
         .overlay(mediaOverlay(from: element))
         .overlay(childrenOverlay(from: element, size: proxy.size, onTap: onTap))
     }
@@ -44,5 +45,5 @@ private func childrenOverlay(
   ForEach(element.children) { element in
     TemplateElementRenderer(element: element, onTap: onTap)
   }
-  .padding(element.padding(in: containerSize))
+  .padding(element.swiftUIPadding(in: containerSize))
 }

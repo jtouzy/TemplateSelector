@@ -5,34 +5,35 @@
 //  Created by Jérémy TOUZY on 24/06/2022.
 //
 
+import AppleExtensions
 import SwiftUI
 
 // MARK: -Template
 
-struct Template: Identifiable, Equatable {
-  let id: UUID
-  let name: String
-  let element: Element
+public struct Template: Identifiable, Equatable {
+  public let id: UUID
+  public let name: String
+  public let element: Element
 }
 
 // MARK: -Template.Element
 
 extension Template {
-  struct Element: Identifiable, Equatable {
-    let id: UUID
-    let relativePosition: RelativePosition
-    let relativeSize: RelativeSize
-    let anchorX: AnchorX
-    let anchorY: AnchorY
-    let relativePadding: EdgeInsets
-    let media: Media?
-    let children: [Element]
-    var backgroundColor: Color
-    var isSelected: Bool
+  public struct Element: Identifiable, Equatable {
+    public let id: UUID
+    public let relativePosition: RelativePosition
+    public let relativeSize: RelativeSize
+    public let anchorX: AnchorX
+    public let anchorY: AnchorY
+    public let relativePadding: EdgeInsets
+    public let media: Media?
+    public let children: [Element]
+    public var backgroundColor: Color
+    public var isSelected: Bool
   }
 }
 extension Template.Element {
-  func centerPosition(in containerSize: CGSize) -> CGPoint {
+  public func swiftUIPosition(in containerSize: CGSize) -> CGPoint {
     // NOTE: First, the position of the top left angle is evaluated.
     let startPosition: CGPoint = .init(
       x: containerSize.width.value(fromRelative: relativePosition.x),
@@ -40,19 +41,19 @@ extension Template.Element {
     )
     // NOTE: Then, we evaluate the offset depending on Anchor (SwiftUI position is centered, and
     // it's better to evaluate offset directly here, to optimize calculations)
-    let middleElementSize = frame(in: containerSize).middle
+    let middleElementSize = swiftUIFrame(in: containerSize).middle
     return .init(
       x: startPosition.x.offset(value: middleElementSize.width, operation: anchorX.offsetOperation),
       y: startPosition.y.offset(value: middleElementSize.height, operation: anchorY.offsetOperation)
     )
   }
-  func frame(in containerSize: CGSize) -> CGSize {
+  public func swiftUIFrame(in containerSize: CGSize) -> CGSize {
     .init(
       width: containerSize.width.value(fromRelative: relativeSize.width),
       height: containerSize.height.value(fromRelative: relativeSize.height)
     )
   }
-  func padding(in containerSize: CGSize) -> EdgeInsets {
+  public func swiftUIPadding(in containerSize: CGSize) -> EdgeInsets {
     .init(
       top: containerSize.height.value(fromRelative: relativePadding.top),
       leading: containerSize.width.value(fromRelative: relativePadding.leading),
@@ -65,15 +66,15 @@ extension Template.Element {
 // MARK: -Template.Element layout types
 
 extension Template.Element {
-  struct RelativeSize: Equatable {
-    let width: CGFloat
-    let height: CGFloat
+  public struct RelativeSize: Equatable {
+    public let width: CGFloat
+    public let height: CGFloat
   }
-  struct RelativePosition: Equatable {
-    let x: CGFloat
-    let y: CGFloat
+  public struct RelativePosition: Equatable {
+    public let x: CGFloat
+    public let y: CGFloat
   }
-  enum AnchorX: String, Equatable {
+  public enum AnchorX: String, Equatable {
     case left, center, right
 
     var offsetOperation: ((CGFloat, CGFloat) -> CGFloat)? {
@@ -84,7 +85,7 @@ extension Template.Element {
       }
     }
   }
-  enum AnchorY: String, Equatable {
+  public enum AnchorY: String, Equatable {
     case bottom, center, top
 
     var offsetOperation: ((CGFloat, CGFloat) -> CGFloat)? {
@@ -100,8 +101,8 @@ extension Template.Element {
 // MARK: -Template.Element.Media type
 
 extension Template.Element {
-  struct Media: Equatable {
-    let name: String
-    let contentMode: ContentMode
+  public struct Media: Equatable {
+    public let name: String
+    public let contentMode: ContentMode
   }
 }

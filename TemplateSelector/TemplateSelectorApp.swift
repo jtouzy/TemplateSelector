@@ -16,7 +16,7 @@ struct TemplateSelectorApp: App {
         store: .init(
           initialState: .initial,
           reducer: Main.reducer,
-          environment: .live
+          environment: .live // NOTE: Here just change to mock to switch to mocked data
         )
       )
     }

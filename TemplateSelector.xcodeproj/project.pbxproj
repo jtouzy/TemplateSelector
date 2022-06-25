@@ -23,6 +23,7 @@
 		F8D802CD28660D9600BB2E2F /* AppleExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = F8D802CC28660D9600BB2E2F /* AppleExtensions */; };
 		F8D802D72867955700BB2E2F /* TemplateListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D802D62867955700BB2E2F /* TemplateListTests.swift */; };
 		F8D802E02867973A00BB2E2F /* Efs in Frameworks */ = {isa = PBXBuildFile; productRef = F8D802DF2867973A00BB2E2F /* Efs */; };
+		F8D802E32867B8BC00BB2E2F /* Environment+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D802E22867B8BC00BB2E2F /* Environment+Mock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		F8D802D62867955700BB2E2F /* TemplateListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateListTests.swift; sourceTree = "<group>"; };
 		F8D802DD2867957600BB2E2F /* TemplateSelector.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TemplateSelector.xctestplan; sourceTree = "<group>"; };
 		F8D802E128679A7600BB2E2F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		F8D802E22867B8BC00BB2E2F /* Environment+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+Mock.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				F8D802C728660C7600BB2E2F /* AppleExtensions */,
 				F8C90EE428660B5D0048689F /* Domain */,
 				F8C90ED82865F1360048689F /* Environment+Live.swift */,
+				F8D802E22867B8BC00BB2E2F /* Environment+Mock.swift */,
 				F8C90EAE28659BFE0048689F /* TemplateSelectorApp.swift */,
 				F8D802DD2867957600BB2E2F /* TemplateSelector.xctestplan */,
 				F8C90EC92865C5920048689F /* Components */,
@@ -269,6 +272,7 @@
 				F8C90EC32865B55D0048689F /* TemplateList.swift in Sources */,
 				F8C90ED92865F1370048689F /* Environment+Live.swift in Sources */,
 				F8C90ECF2865C6470048689F /* TemplateEditor.swift in Sources */,
+				F8D802E32867B8BC00BB2E2F /* Environment+Mock.swift in Sources */,
 				F8C90EAF28659BFE0048689F /* TemplateSelectorApp.swift in Sources */,
 				F8C90ED72865D29A0048689F /* Main.swift in Sources */,
 				F8C90EC82865C3760048689F /* TemplateRenderer.swift in Sources */,

@@ -23,7 +23,7 @@ public struct Template: Identifiable, Equatable {
     return findElement(in: element, identifiedBy: selectedElementId)
   }
 
-  public init(id: UUID, name: String, element: Element, selectedElementId: Element.ID?) {
+  public init(id: UUID, name: String, element: Element, selectedElementId: Element.ID? = nil) {
     self.id = id
     self.name = name
     self.element = element

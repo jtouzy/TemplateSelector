@@ -41,10 +41,20 @@ extension TemplateService {
 
 extension TemplateService {
   static let live: Self = .init(
-    fetch: {
-      guard let url = URL(string: "https://ptitchevreuil.github.io/mojo/templates.json") else {
-        throw FetchTemplateError.invalidFetchingURL
-      }
+    fetch: fetchHandler()
+  )
+}
+
+private let cachingKey = "OFFLINE_DATA"
+private let fetchURL = "https://ptitchevreuil.github.io/mojo/templates.json"
+
+private func fetchHandler() -> TemplateService.Fetch {
+  return {
+    guard let url = URL(string: fetchURL) else {
+      throw FetchTemplateError.invalidFetchingURL
+    }
+    do {
+      // NOTE: We try to invoke the URL in first step
       let (data, response) = try await URLSession.shared.data(for: URLRequest(url: url))
       guard let httpResponse = response as? HTTPURLResponse else {
         throw FetchTemplateError.httpResponseCannotBeParsed
@@ -52,7 +62,14 @@ extension TemplateService {
       if (200...299).contains(httpResponse.statusCode) == false {
         throw FetchTemplateError.invalidHttpResponseStatusCode
       }
+      UserDefaults.standard.setValue(data, forKey: cachingKey)
       return data
+    } catch {
+      // NOTE: If any error occurs, just check if the data is cached locally
+      guard let cached = UserDefaults.standard.data(forKey: cachingKey) else {
+        throw error
+      }
+      return cached
     }
-  )
+  }
 }
